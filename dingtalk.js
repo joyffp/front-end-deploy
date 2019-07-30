@@ -28,8 +28,4 @@ function ddMsg(msg, _token) {
     req.end();
 }
 
-function _ddMsg(msg) {
-    console.log(msg)
-}
-
 module.exports = ddMsg
