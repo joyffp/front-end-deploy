@@ -1,8 +1,10 @@
 # front-end-deploy
-前端部署
+  - 前端部署
+  - 钉钉消息发送
 
 ##### 第一步
-需配置好NODE相关环境
+  - 需配置好NODE、ssh相关环境
+  - 钉钉开发文档自定义机器人 https://open-doc.dingtalk.com/microapp/serverapi2/qf2nxq
 
 ##### 第二步
 使用 pm2 运行 index.js
