@@ -1,13 +1,12 @@
 // 2019.07.11 by joyffp
 const child_process = require("child_process");
 const ddMsg = require("./dingtalk.js");
+const config = require("./config.js");
 
-var deployList = [
-    { "id": 100, "name": "【项目fe1】", "path": "/code/fe1", "branch": "master", "time": 5000 },
-    { "id": 101, "name": "【项目fe2】", "path": "/code/fe2", "branch": "develop", "time": 5000 }
-]
+var deployList = config.deployList
+var delimiter = config.delimiter
 
-ddMsg('【服务重启成功】127.0.0.1=>' + new Date())
+ddMsg('【服务重启成功】' + config.ip + '=>' + new Date())
 
 var deployObj = {}
 
@@ -57,7 +56,7 @@ function execCommit2(fepath, febranch, feid, dataCommit1, fename) {
                         deployObj[feid] = false
                         if (dataEnd !== 'error') {
                             runExec('cd ' + fepath + ' && git log -1', function (dataLog) {
-                                ddMsg('【部署成功】' + fename + '\r' + dataLog)
+                                ddMsg('【部署成功】' + fename + delimiter + 'Branch：' + febranch + delimiter + dataLog)
                             })
                             resolve(dataCommit1 + '!==' + dataCommit2 + new Date() + feid)
                         } else {
@@ -82,7 +81,7 @@ function runInit(fepath, febranch, feid, fename) {
             console.log(data)
         }).catch(function (err) {
             deployObj[feid] = false
-            ddMsg('【部署失败】' + fename + '\r' + err)
+            ddMsg('【部署失败】' + fename + '\r' + err, config.dingtalkTokenError)
         })
 }
 

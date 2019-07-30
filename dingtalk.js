@@ -1,6 +1,7 @@
 // 2019.07.18 by joyffp
 const https = require("https");
-function ddMsg(msg) {
+const config = require("./config.js");
+function ddMsg(msg, _token) {
     const queryParams = {
         "msgtype": "text",
         "text": {
@@ -8,7 +9,7 @@ function ddMsg(msg) {
         }
     };
     const requestData = JSON.stringify(queryParams);
-    const token = "-------";
+    const token = _token || config.dingtalkTokenSuccess;
     const url = 'oapi.dingtalk.com';
     const req = https.request({
         hostname: url,
@@ -25,6 +26,10 @@ function ddMsg(msg) {
         console.error(err);
     });
     req.end();
+}
+
+function _ddMsg(msg) {
+    console.log(msg)
 }
 
 module.exports = ddMsg
