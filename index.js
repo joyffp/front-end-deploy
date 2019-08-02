@@ -44,7 +44,7 @@ function execCommit1(fepath) {
     })
 }
 
-function execCommit2(fepath, febranch, feid, dataCommit1, fename) {
+function execCommit2(fepath, febranch, feid, dataCommit1, fename, feshell) {
     return new Promise(function (resolve, reject) {
         runExec('cd ' + fepath + ' && git rev-parse --short origin/' + febranch, function (dataCommit2) {
             if (dataCommit2 !== 'error') {
@@ -57,6 +57,11 @@ function execCommit2(fepath, febranch, feid, dataCommit1, fename) {
                         if (dataEnd !== 'error') {
                             runExec('cd ' + fepath + ' && git log -1', function (dataLog) {
                                 ddMsg('【部署成功】' + fename + delimiter + 'Branch：' + febranch + delimiter + dataLog)
+                                if (feshell) {
+                                    runExec(feshell, function (dataLogShell) {
+                                        ddMsg('【构建完成】' + fename + delimiter + 'Branch：' + febranch + delimiter + dataLogShell)
+                                    })
+                                }
                             })
                             resolve(dataCommit1 + '!==' + dataCommit2 + new Date() + feid)
                         } else {
@@ -71,17 +76,17 @@ function execCommit2(fepath, febranch, feid, dataCommit1, fename) {
     })
 }
 
-function runInit(fepath, febranch, feid, fename) {
+function runInit(fepath, febranch, feid, fename, feshell) {
     execFetch(fepath)
         .then(function () {
             return execCommit1(fepath)
         }).then(function (dataCommit1) {
-            return execCommit2(fepath, febranch, feid, dataCommit1, fename)
+            return execCommit2(fepath, febranch, feid, dataCommit1, fename, feshell)
         }).then(function (data) {
             console.log(data)
         }).catch(function (err) {
             deployObj[feid] = false
-            ddMsg('【部署失败】' + fename + '\r' + err, config.dingtalkTokenError)
+            ddMsg('【部署失败】' + fename + delimiter + 'Branch：' + febranch + delimiter + err, config.dingtalkTokenError)
         })
 }
 
@@ -91,7 +96,7 @@ function deployInit() {
         if (!deployObj[element.id]) {
             deployObj[element.id] = true
             setTimeout(function () {
-                runInit(element.path, element.branch, element.id, element.name)
+                runInit(element.path, element.branch, element.id, element.name, element.feshell)
             }, element.time)
         }
     }
