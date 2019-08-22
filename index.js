@@ -6,7 +6,7 @@ const config = require("./config.js");
 var deployList = config.deployList
 var delimiter = config.delimiter
 
-ddMsg('【服务重启成功】' + config.ip + '=>' + new Date())
+ddMsg('【服务重启成功】' + config.ip + '=>' + new Date(), config.dingtalkTokenError)
 
 var deployObj = {}
 
@@ -56,7 +56,7 @@ function execCommit2(fepath, febranch, feid, dataCommit1, fename, feshell) {
                         deployObj[feid] = false
                         if (dataEnd !== 'error') {
                             runExec('cd ' + fepath + ' && git log -1', function (dataLog) {
-                                ddMsg('【部署成功】' + fename + delimiter + 'Branch：' + febranch + delimiter + dataLog)
+                                ddMsg('【部署成功】' + fename + delimiter + 'IP：' + config.ip + delimiter + 'Branch：' + febranch + delimiter + dataLog)
                                 if (feshell) {
                                     runExec(feshell, function (dataLogShell) {
                                         ddMsg('【构建完成】' + fename + delimiter + 'Branch：' + febranch + delimiter + dataLogShell)
