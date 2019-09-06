@@ -86,7 +86,7 @@ function runInit(fepath, febranch, feid, fename, feshell) {
             console.log(data)
         }).catch(function (err) {
             deployObj[feid] = false
-            ddMsg('【部署失败】' + fename + delimiter + 'Branch：' + febranch + delimiter + err, config.dingtalkTokenError)
+            ddMsg('【部署失败】' + fename + delimiter + 'IP：' + config.ip + delimiter + 'Branch：' + febranch + delimiter + err, config.dingtalkTokenError)
         })
 }
 
