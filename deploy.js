@@ -26,7 +26,7 @@ function execFetch(fepath) {
             if (data1 !== 'error') {
                 resolve()
             } else {
-                reject('error execFetch')
+                reject('execFetch')
             }
         })
     })
@@ -38,7 +38,7 @@ function execCommit1(fepath) {
             if (dataCommit1 !== 'error') {
                 resolve(dataCommit1)
             } else {
-                reject('error execCommit1')
+                reject('execCommit1')
             }
         })
     })
@@ -70,7 +70,7 @@ function execCommit2(fepath, febranch, feid, dataCommit1, fename, feshell) {
                     })
                 }
             } else {
-                reject('error execCommit2')
+                reject('execCommit2')
             }
         })
     })
@@ -86,7 +86,11 @@ function runInit(fepath, febranch, feid, fename, feshell) {
             console.log(data)
         }).catch(function (err) {
             deployObj[feid] = false
-            ddMsg('【部署失败】' + fename + delimiter + 'IP：' + config.ip + delimiter + 'Branch：' + febranch + delimiter + err, config.dingtalkTokenError)
+            let dingtalkTokenCatch = config.dingtalkTokenWaring
+            if (err === 'execCommit2') {
+                dingtalkTokenCatch = config.dingtalkTokenError
+            }
+            ddMsg('【部署失败】' + fename + delimiter + 'IP：' + config.ip + delimiter + 'Branch：' + febranch + delimiter + 'Error: ' + err, dingtalkTokenCatch)
         })
 }
 
