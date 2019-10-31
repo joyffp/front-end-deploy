@@ -6,7 +6,7 @@ const config = require("./config.js");
 var deployList = config.deployList
 var delimiter = config.delimiter
 
-ddMsg('【服务重启成功】' + config.ip + '=>' + new Date(), config.dingtalkTokenError)
+ddMsg('【服务重启成功】' + config.ip + '=>' + new Date(), config.dingtalkTokenWaring)
 
 var deployObj = {}
 
