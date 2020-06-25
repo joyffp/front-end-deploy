@@ -7,7 +7,7 @@
   - 钉钉开发文档自定义机器人 https://open-doc.dingtalk.com/microapp/serverapi2/qf2nxq
 
 ##### 第二步
-使用 pm2 运行 index.js
+使用 pm2 运行 deploy.js
 
 ##### nodejs部署关键点
 ```
@@ -18,7 +18,7 @@ git checkout -f
 ```
 
 ##### 其它说明
-目录 /php-history/* 为自动部署webhook的PHP实现版本，gitlab与tfs会有细微差异，仅供参考
+目录 _history/* 为自动部署webhook的PHP实现版本，gitlab与tfs会有细微差异，仅供参考
 
 
 

@@ -1,8 +1,8 @@
+// 2020.06.24 升级dingtalk，token参数变更为必填
 // 2019.07.11 by joyffp
-// 2020-06-24 16:07:05 升级为dingtalk2.js
 const child_process = require("child_process")
 const config = require("./configDeploy.js")
-const ddMsg = require("./dingtalk2.js")
+const ddMsg = require("./dingtalk.js")
 
 var deployList = config.deployList
 var delimiter = config.delimiter

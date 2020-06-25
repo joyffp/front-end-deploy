@@ -1,5 +1,5 @@
-// 2020.06.24 by joyffp
-// 2020-06-24 16:03:40 token变更为必选参数
+// 2020.06.24 去除config文件依赖、token变更为必选参数
+// 2019.07.18 by joyffp
 const https = require("https")
 module.exports = function (msg, token) {
     const queryParams = {
