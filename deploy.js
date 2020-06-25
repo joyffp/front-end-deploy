@@ -1,7 +1,7 @@
 // 2019.07.11 by joyffp
 // 2020-06-24 16:07:05 升级为dingtalk2.js
 const child_process = require("child_process")
-const config = require("./config.js")
+const config = require("./configDeploy.js")
 const ddMsg = require("./dingtalk2.js")
 
 var deployList = config.deployList

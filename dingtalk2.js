@@ -9,7 +9,6 @@ module.exports = function (msg, token) {
         },
     }
     const requestData = JSON.stringify(queryParams)
-    const token = token
     const url = "oapi.dingtalk.com"
     const req = https.request({
         hostname: url,

@@ -12,9 +12,9 @@ module.exports = {
         },
     ],
     ip: "127.0.0.1",
-    dingtalkTokenSuccess: "d3887f2b6700276a4820015619c8df1558b12a988afb9e6dea1cc6dd0c45d55e",
-    dingtalkTokenWaring: "d3887f2b6700276a4820015619c8df1558b12a988afb9e6dea1cc6dd0c45d55e",
-    dingtalkTokenError: "d3887f2b6700276a4820015619c8df1558b12a988afb9e6dea1cc6dd0c45d55e",
+    dingtalkTokenSuccess: "******",
+    dingtalkTokenWaring: "******",
+    dingtalkTokenError: "******",
     delimiter: "\n",
     modifyVerTime: "2019-10-31 09:34:27",
 }
